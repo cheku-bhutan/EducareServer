@@ -1,0 +1,4 @@
+#import Types/*.graphql
+#import Types/InputTypes/*.graphql
+#import Queries/*.graphql
+#import Mutations/*.graphql

@@ -1,0 +1,10 @@
+type AuthResult {
+    token: String
+    user: User
+}
+
+type LogoutResult{
+    user:User
+    code:String!
+    message:String!
+}

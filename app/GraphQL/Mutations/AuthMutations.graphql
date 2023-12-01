@@ -1,0 +1,4 @@
+extend type Mutation {
+  login(input: LoginInput!): AuthResult! @field(resolver: "App\\GraphQL\\Resolvers\\AuthResolver@login")
+  logout: LogoutResult! @field(resolver: "App\\GraphQL\\Resolvers\\AuthResolver@logout")
+}

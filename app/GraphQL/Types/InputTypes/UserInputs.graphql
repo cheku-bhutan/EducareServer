@@ -1,0 +1,13 @@
+input CreateUserInput {
+  user_id: String!
+  email: String!
+  mobile_no: String!
+  name: String!
+  profile_picture: String!
+  password: String!
+}
+
+input ChangePasswordInput{
+  email: String!
+  new_password: String!
+}

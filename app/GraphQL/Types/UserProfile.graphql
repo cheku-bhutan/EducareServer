@@ -1,0 +1,6 @@
+ type UserProfile{
+    id: ID!
+    name: String!
+    profile_picture: String!
+    user: User! @belongsTo
+}
