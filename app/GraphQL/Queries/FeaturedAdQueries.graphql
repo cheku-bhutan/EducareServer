@@ -1,0 +1,5 @@
+extend type Query {
+    featuredAds(
+      status: String @where(operator: "=")
+    ): [FeaturedAd!]! @paginate(defaultCount: 5)
+}

@@ -1,0 +1,4 @@
+extend type Mutation {
+  createFeaturedAd(input: FeaturedAdInputs!): FeaturedAd! @field(resolver: "App\\GraphQL\\Resolvers\\FeaturedAdResolver@createFeaturedAd")
+  deleteFeaturedAd(id:ID!): FeaturedAd! @guard @field(resolver: "App\\GraphQL\\Resolvers\\FeaturedAdResolver@deleteFeaturedAd")
+}

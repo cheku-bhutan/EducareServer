@@ -1,0 +1,8 @@
+input FeaturedAdInputs {
+    title: String!
+    type: String!
+    status: String!
+    cover_photo: String!
+    sub_title: String
+    description: String
+}

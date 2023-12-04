@@ -1,0 +1,13 @@
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type FeaturedAd {
+    id: ID!
+    title: String!
+    type: String!
+    status: String!
+    sub_title: String
+    description: String
+    cover_photo: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
