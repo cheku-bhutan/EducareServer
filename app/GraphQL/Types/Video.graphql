@@ -1,0 +1,26 @@
+ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+ type Video{
+    id: ID!
+    title: String!
+    subtitle: String!
+    description: String!
+    cover_photo: String!
+    thumbnail: String!
+    video_url: String!
+    status: String!
+    release_date: String!
+    category: VideoCategory! @belongsTo
+}
+
+type VideoCategory{
+    id: ID!
+    name: String!
+    description: String!
+    videos: [Video!]! @hasMany
+}
+
+type NewReleaseResult{
+    data: [Video]
+    error: GenericResponse
+}

@@ -1,5 +1,7 @@
 extend type Mutation {
   createUser(input: CreateUserInput!): User! @field(resolver: "App\\GraphQL\\Resolvers\\UserResolver@createUser")
   deleteUser(id:ID!): User! @guard @field(resolver: "App\\GraphQL\\Resolvers\\UserResolver@deleteUser")
-  changePassword(input: ChangePasswordInput!): ChangePassword! @field(resolver: "App\\GraphQL\\Resolvers\\UserResolver@changePassword")
+  changePassword(input: ChangePasswordInput!): GenericResponse! @field(resolver: "App\\GraphQL\\Resolvers\\UserResolver@changePassword")
+  generateOtp(email: String!): GenericResponse! @field(resolver: "App\\GraphQL\\Resolvers\\UserResolver@generateOtp")
+  validateOtp(email: String!, otp: String!): GenericResponse! @field(resolver: "App\\GraphQL\\Resolvers\\UserResolver@verifyOtp")
 }

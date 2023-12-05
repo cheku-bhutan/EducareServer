@@ -11,3 +11,8 @@ type FeaturedAd {
     created_at: DateTime!
     updated_at: DateTime!
 }
+
+type FeaturedAdsResult{
+    data: [FeaturedAd]
+    error: GenericResponse
+}

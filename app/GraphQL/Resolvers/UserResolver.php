@@ -3,6 +3,7 @@ namespace App\GraphQL\Resolvers;
 
 use App\Models\User;
 use App\Models\UserProfile;
+use App\Services\OtpService;
 use Illuminate\Support\Facades\Hash;
 
 class UserResolver
@@ -58,5 +59,40 @@ class UserResolver
                 'message' => "Password updated Succesfully"
             );
         }
+    }
+
+    public function generateOtp($rootValue, array $args)
+    {
+        $otpService = new OtpService;
+        $otp = $otpService->generate($args['email']);
+        
+        if($otp->status){
+            send_email($args['email'], 'OTP', array('title'=> 'OTP for EducareSkill Signup', 'content'=>$otp->token));
+            return array(
+                'code' => "success",
+                'message' => "OTP generated mailed Succesfully"
+            );
+        }
+        return array(
+            'code' => "error",
+            'message' => "OTP generation Failed"
+        );
+    }
+
+    public function verifyOtp($rootValue, array $args)
+    {
+        $otpService = new OtpService;
+        $otp = $otpService->validate($args['email'],$args['otp']);
+        
+        if($otp->status){
+            return array(
+                'code' => "success",
+                'message' => $otp->message
+            );
+        }
+        return array(
+            'code' => "error",
+            'message' => $otp->mesage
+        );
     }
 }
