@@ -1,6 +1,7 @@
 type AuthResult {
     token: String
     user: User
+    error: GenericResponse
 }
 
 type LogoutResult{

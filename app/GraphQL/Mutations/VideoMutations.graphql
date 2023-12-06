@@ -1,0 +1,4 @@
+extend type Mutation {
+  createVideo(input: CreateVideoInput!): Video! @field(resolver: "App\\GraphQL\\Resolvers\\VideoResolver@createVideo")
+  createVideoCategory(input: CreateVideoCategoryInput!): VideoCategory! @field(resolver: "App\\GraphQL\\Resolvers\\VideoResolver@createVideoCategory")
+}

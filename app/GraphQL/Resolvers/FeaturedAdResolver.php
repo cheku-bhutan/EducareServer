@@ -33,5 +33,25 @@ class FeaturedAdResolver
 
         return $featuredAd;
     }
+
+    public function featuredAds($rootValue, array $args)
+    {
+        $count = $args['count'];
+
+        $featuredAds = FeaturedAd::where('status', 'Active')->limit($count)->get();
+        $featuredAdsData =[];
+        if($featuredAds->count()>0){
+            foreach($featuredAds as $featuredAd){
+                array_push($featuredAdsData, $featuredAd);
+            }
+            return ['data'=>$featuredAdsData];
+        }
+        return [
+            'error' =>[
+                'code' => 0,
+                'message' => 'No record(s) found'
+            ]
+        ];
+    }
     
 }

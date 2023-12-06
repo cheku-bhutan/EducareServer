@@ -1,5 +1,5 @@
 extend type Query {
     featuredAds(
-      status: String @where(operator: "=")
-    ): [FeaturedAd!]! @paginate(defaultCount: 5)
+      count: Int
+    ): FeaturedAdsResult @field(resolver: "App\\GraphQL\\Resolvers\\FeaturedAdResolver@featuredAds")
 }

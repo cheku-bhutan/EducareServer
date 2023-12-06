@@ -13,8 +13,3 @@ type User {
     updated_at: DateTime!
     profile: UserProfile! @hasOne
 }
-
-type ChangePassword{
-    code:String!
-    message:String!
-}

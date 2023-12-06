@@ -1,6 +1,7 @@
 <?php
 namespace App\GraphQL\Resolvers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
@@ -14,7 +15,7 @@ class AuthResolver
             'email' => $input['email'],
             'password' => $input['password'],
         ];
-        
+        $hasUser = User::where('email', $input['email'])->exists();
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('Personal Access Token')->accessToken;
@@ -24,7 +25,12 @@ class AuthResolver
                 'user' => $user,
             ];
         }
-        return null; // or handle unsuccessful login
+        return [
+            'error' => [
+                'code' => 0,
+                'message' => $hasUser? 'Wrong password': 'Sorry, we could not find your account'
+            ]
+        ]; // or handle unsuccessful login
     }
 
     public function logout($rootValue, array $args, GraphQLContext $context)
